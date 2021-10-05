@@ -1,0 +1,7 @@
+node_modules/
+*.tsbuildinfo
+.eslintcache
+.npm
+.vscode/
+package-lock.json
+**/.DS_Store

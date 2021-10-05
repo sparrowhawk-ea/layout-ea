@@ -1,0 +1,61 @@
+{
+	"author": "sparrowhawk-ea",
+	"bugs": {
+		"url": "https://github.com/sparrowhawk-ea/layout-ea/issues"
+	},
+	"description": "Layout Ea",
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "*",
+		"@typescript-eslint/parser": "*",
+		"eslint": "*",
+		"eslint-config-prettier": "*",
+		"eslint-plugin-prettier": "*",
+		"prettier": "*",
+		"rollup": "*",
+		"terser": "*",
+		"typescript": "*"
+	},
+	"files": [
+		"dist"
+	],
+	"homepage": "https://github.com/sparrowhawk-ea/layout-ea#readme",
+	"keywords": [
+		"HTML",
+		"Layout"
+	],
+	"license": "MIT",
+	"main": "dist/index.js",
+	"module": "dist/index.min.mjs",
+	"name": "@eafmm/layout-ea",
+	"peerDependencies": {
+		"tslib": "*"
+	},
+	"prettier": {
+		"arrowParens": "avoid",
+		"bracketSpacing": true,
+		"printWidth": 132,
+		"semi": true,
+		"singleQuote": true,
+		"tabWidth": 4,
+		"trailingComma": "none",
+		"useTabs": true
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sparrowhawk-ea/layout-ea.git"
+	},
+	"scripts": {
+		"build": "rm -rf dist && npm run lint && tsc && cp *.html dist && npm run bundle",
+		"bundle": "npm run bundle:esm && npm run bundle:esm:min && npm run bundle:umd && npm run bundle:umd:min",
+		"bundle:esm": "rollup dist/index.js --file dist/index.mjs --format esm",
+		"bundle:esm:min": "terser --ecma 6 --compress --mangle --module -o dist/index.min.mjs -- dist/index.mjs && gzip -9 -c dist/index.min.mjs > dist/index.min.mjs.gz",
+		"bundle:umd": "rollup dist/index.js --file dist/index.umd.js --format umd --name sayHello",
+		"bundle:umd:min": "terser --ecma 6 --compress --mangle -o dist/index.umd.min.js -- dist/index.umd.js && gzip -9 -c dist/index.umd.min.js > dist/index.umd.min.js.gz",
+		"lint": "eslint --report-unused-disable-directives --ext .ts .",
+		"prepare": "npm run build",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"types": "dist/index.d.ts",
+	"unpkg": "dist/index.umd.min.js",
+	"version": "1.0.0"
+}

@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Layout Ea Grid Responsive</title>
+    <style>
+        /* this would normally be in a separate file */
+        div {
+            border: 1px solid black;
+        }
+
+        #root {
+            width: 400px;
+            height: 300px;
+        }
+    </style>
+    <script type='module'>
+        // this would normally be in a separate file
+        import { LayoutEa, LayoutEaGrid } from './index.mjs';
+        window.doLayout = function () {
+            LayoutEa.layout(document.body, {
+                debug: true,
+                mediaLayouts: [{
+                    mediaQuery: 'screen',
+                    layout: {
+                        '#root': '0,2; 1 2; *! 3,*',
+                        '#unchanged': 'DIV/*',
+                        '#second': '_ DIV/* 0'
+                    }
+                }, {
+                    name: 'print',
+                    mediaQuery: 'print',
+                    fallback: 'screen',
+                    layout: {
+                        '#root': '0,,*! 1; *! 2',
+                        // '#unchanged' layout will be copied from the fallback media 'screen'
+                        '#second': '@screen:#unchanged'
+                    }
+                }],
+                strategy: LayoutEaGrid
+            });
+        }
+    </script>
+</head>
+
+<body onload='doLayout()'>
+    <div id='root'>
+        <div>0</div>
+        <div>1</div>
+        <div>2</div>
+        <div id='unchanged'>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+        </div>
+        <div id='second'>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"declaration": true,
+		"esModuleInterop": true,
+		"importHelpers": true,
+		"isolatedModules": true,
+		"lib": ["dom", "es2020"],
+		"module": "es2020",
+		"moduleResolution": "node",
+		"outDir": "./dist",
+		"removeComments": true,
+		"strict": true,
+		"target": "es6"
+	},
+	"include": ["src"],
+	"exclude": ["dist", "node_modules"]
+}
