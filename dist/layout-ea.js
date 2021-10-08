@@ -23,12 +23,12 @@ class CallbackWrapper {
     child({ e, cssSelector }, style, context) {
         if (this.callback)
             style = this.callback.eaChild(e, this.mediaName, cssSelector, style, context);
-        this.cssRules.push(cssSelector + style);
+        this.cssRules.push(cssSelector + '{' + style + '}');
     }
     parent({ e, cssSelector }, style, context) {
         if (this.callback)
             style = this.callback.eaParent(e, this.mediaName, cssSelector, style, context);
-        this.cssRules.push(cssSelector + style);
+        this.cssRules.push(cssSelector + '{' + style + '}');
     }
 }
 class Child {
@@ -207,8 +207,8 @@ class Impl {
             throw new Error('config layout and mediaLayouts are mutually exclusive');
         this.callback = new CallbackWrapper(config.callback);
         const dataPrefix = config.dataPrefix || 'ea';
-        this.dataPropIgnore = dataPrefix + 'X';
-        this.dataPropIndex = dataPrefix + 'I';
+        this.dataPropIgnore = dataPrefix + 'Exclude';
+        this.dataPropIndex = dataPrefix + 'Index';
         this.debugPrefix = config.debug ? 'LayoutEa:' : '';
         this.ignore = config.ignore || [];
         this.layoutRules = {};
@@ -235,6 +235,10 @@ class Impl {
             this.mediaLayouts.forEach(({ fallback, layout, mediaQuery, name }) => {
                 if (!mediaQuery)
                     this.root.die('missing media query');
+                if (name && mediaNames.includes(name))
+                    this.root.die('duplicate name', name);
+                if (!name && mediaNames.includes(mediaQuery))
+                    this.root.die('duplicate media query as name', mediaQuery);
                 if (fallback && !mediaNames.includes(fallback))
                     this.root.die('unknown fallback media name', fallback);
                 mediaNames.push(name = name || mediaQuery);
@@ -347,11 +351,11 @@ class Grid {
                 return;
             const itemRow = this.cellsAboveRow[item.row];
             const itemHeight = (item.height ? this.cellsAboveRow[item.row + item.height] : gridHeight) - itemRow;
-            callback.child(child, '{grid-row:' + String(itemRow + 1) + '/span ' + String(itemHeight) + ';grid-column:'
-                + String(item.col + 1) + '/span ' + String(item.width) + '}');
+            callback.child(child, 'grid-row:' + String(itemRow + 1) + '/span ' + String(itemHeight) + ';grid-column:'
+                + String(item.col + 1) + '/span ' + String(item.width) + ';');
         });
-        callback.parent(this.parent, '{display:grid;align-content:stretch;justify-content:stretch;grid-auto-columns:'
-            + String(100 / gridWidth) + '%;grid-auto-rows:' + String(100 / gridHeight) + '%}');
+        callback.parent(this.parent, 'display:grid;align-content:stretch;justify-content:stretch;grid-auto-columns:'
+            + String(100 / gridWidth) + '%;grid-auto-rows:' + String(100 / gridHeight) + '%;');
     }
     errLoc(row, col = -1) {
         return '(row:' + String(row) + (col < 0 ? ') ' : ' col:' + String(col) + ') ');
