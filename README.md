@@ -28,7 +28,7 @@ This library consists of one layout manager [Layout Ea Grid](README_Grid.md) whi
 ***
 # Getting Started
 
-Please see [Layout Ea Grid](Readme_Grid.md#gettingstarted).
+Please see [Layout Ea Grid](README_Grid.md#gettingstarted).
 
 ***
 # API
