@@ -48,13 +48,11 @@ Feel free to copy the file below and play around with the layouts to see the res
             height: 400px;
         }
     </style>
-    <script type='module'>
+    <script src='//cdn.jsdelivr.net/gh/sparrowhawk-ea/layout-ea/dist/index.js'></script>
+    <script>
         // this would normally be in a separate file
-        import {
-            LayoutEa, LayoutEaGrid
-        } from 'https://cdn.jsdelivr.net/gh/sparrowhawk-ea/layout-ea/dist/index.mjs';
-        window.doLayout = function () {
-            LayoutEa.layout(document.body, {
+        function doLayout() {
+            LayoutEa.LayoutEa.layout(document.body, {
                 debug: true,
                 layout: {
                     '.hdr': '0,,2 1,BannerWidth,2 BUTTON,2; BUTTON/1,2; #menu,*',
@@ -70,7 +68,7 @@ Feel free to copy the file below and play around with the layouts to see the res
                     'BannerWidth': '7',
                     'FullHeight': '*!'
                 },
-                strategy: LayoutEaGrid
+                strategy: LayoutEa.LayoutEaGrid
             });
         }
     </script>
@@ -154,13 +152,11 @@ Feel free to copy the file below and play around with the layouts to see the res
             height: 300px;
         }
     </style>
-    <script type='module'>
+    <script src='//cdn.jsdelivr.net/gh/sparrowhawk-ea/layout-ea/dist/index.js'></script>
+    <script>
         // this would normally be in a separate file
-        import {
-            LayoutEa, LayoutEaGrid
-        } from 'https://cdn.jsdelivr.net/gh/sparrowhawk-ea/layout-ea/dist/index.mjs';
-        window.doLayout = function () {
-            LayoutEa.layout(document.body, {
+        function doLayout() {
+            LayoutEa.LayoutEa.layout(document.body, {
                 debug: true,
                 mediaLayouts: [{
                     mediaQuery: 'screen',
@@ -179,7 +175,7 @@ Feel free to copy the file below and play around with the layouts to see the res
                         '#second': '@screen:#unchanged'
                     }
                 }],
-                strategy: LayoutEaGrid
+                strategy: LayoutEa.LayoutEaGrid
             });
         }
     </script>
