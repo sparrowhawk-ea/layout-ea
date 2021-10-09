@@ -14,11 +14,11 @@
             height: 400px;
         }
     </style>
-    <script type='module'>
+    <script src='//cdn.jsdelivr.net/gh/sparrowhawk-ea/layout-ea/dist/index.js'></script>
+    <script>
         // this would normally be in a separate file
-        import { LayoutEa, LayoutEaGrid } from 'https://cdn.jsdelivr.net/gh/sparrowhawk-ea/layout-ea/dist/index.mjs';
-        window.doLayout = function () {
-            LayoutEa.layout(document.body, {
+        function doLayout() {
+            LayoutEa.LayoutEa.layout(document.body, {
                 debug: true,
                 layout: {
                     '.hdr': '0,,2 1,BannerWidth,2 BUTTON,2; BUTTON/1,2; #menu,*',
@@ -34,7 +34,7 @@
                     'BannerWidth': '7',
                     'FullHeight': '*!'
                 },
-                strategy: LayoutEaGrid
+                strategy: LayoutEa.LayoutEaGrid
             });
         }
     </script>

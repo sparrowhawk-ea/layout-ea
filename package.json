@@ -5,6 +5,8 @@
 	},
 	"description": "Layout Ea",
 	"devDependencies": {
+		"@rollup/plugin-commonjs": "*",
+		"@rollup/plugin-node-resolve": "*",
 		"@typescript-eslint/eslint-plugin": "*",
 		"@typescript-eslint/parser": "*",
 		"eslint": "*",
@@ -12,7 +14,8 @@
 		"eslint-plugin-prettier": "*",
 		"prettier": "*",
 		"rollup": "*",
-		"terser": "*",
+		"rollup-plugin-dts": "*",
+		"rollup-plugin-esbuild": "*",
 		"typescript": "*"
 	},
 	"files": [
@@ -25,7 +28,7 @@
 	],
 	"license": "MIT",
 	"main": "dist/index.js",
-	"module": "dist/index.min.mjs",
+	"module": "dist/index.mjs",
 	"name": "@eafmm/layout-ea",
 	"peerDependencies": {
 		"tslib": "*"
@@ -45,17 +48,12 @@
 		"url": "git+https://github.com/sparrowhawk-ea/layout-ea.git"
 	},
 	"scripts": {
-		"build": "rm -rf dist && npm run lint && tsc && cp *.html dist && npm run bundle",
-		"bundle": "npm run bundle:esm && npm run bundle:esm:min && npm run bundle:umd && npm run bundle:umd:min",
-		"bundle:esm": "rollup dist/index.js --file dist/index.mjs --format esm",
-		"bundle:esm:min": "terser --ecma 6 --compress --mangle --module -o dist/index.min.mjs -- dist/index.mjs && gzip -9 -c dist/index.min.mjs > dist/index.min.mjs.gz",
-		"bundle:umd": "rollup dist/index.js --file dist/index.umd.js --format umd --name sayHello",
-		"bundle:umd:min": "terser --ecma 6 --compress --mangle -o dist/index.umd.min.js -- dist/index.umd.js && gzip -9 -c dist/index.umd.min.js > dist/index.umd.min.js.gz",
+		"build": "rm -rf dist && npm run lint && rollup -c && npm run gzip",
+		"gzip": "gzip -9 -c dist/index.js > dist/index.js.gz && gzip -9 -c dist/index.mjs > dist/index.mjs.gz",
 		"lint": "eslint --report-unused-disable-directives --ext .ts .",
 		"prepare": "npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"types": "dist/index.d.ts",
-	"unpkg": "dist/index.umd.min.js",
-	"version": "1.0.1"
+	"typings": "dist/index.d.ts",
+	"version": "1.0.2"
 }
