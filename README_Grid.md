@@ -3,6 +3,10 @@ This layout manager lays out the immediate child HTML elements of the given HTML
 The number of columns and rows is configurable.
 The parent HTML element of each grid is given a class of **layout-ea-grid** which can be used as a CSS selector to further customize styles.
 
+[Demo Application](https://sparrowhawk-ea.github.io/layout-ea/)
+
+[Responsive Layout Demo Application](https://sparrowhawk-ea.github.io/layout-ea/media.html)
+
 ***
 # Getting Started
 ## Installation
@@ -27,8 +31,6 @@ LayoutEa.layout(document.body, {
 
 ## Example
 
-Feel free to copy the file below and play around with the layouts to see the results.
-
 <img src='docs/index.png' alt='index result' width=600/>
 
 ```html
@@ -48,7 +50,7 @@ Feel free to copy the file below and play around with the layouts to see the res
             height: 400px;
         }
     </style>
-    <script src='//cdn.jsdelivr.net/gh/sparrowhawk-ea/layout-ea/dist/index.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@eafmm/layout-ea/dist/index.js'></script>
     <script>
         // this would normally be in a separate file
         function doLayout() {
@@ -151,8 +153,14 @@ Feel free to copy the file below and play around with the layouts to see the res
             width: 400px;
             height: 300px;
         }
+
+        @media print {
+            body>p {
+                display: none;
+            }
+        }
     </style>
-    <script src='//cdn.jsdelivr.net/gh/sparrowhawk-ea/layout-ea/dist/index.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@eafmm/layout-ea/dist/index.js'></script>
     <script>
         // this would normally be in a separate file
         function doLayout() {
@@ -182,6 +190,7 @@ Feel free to copy the file below and play around with the layouts to see the res
 </head>
 
 <body onload='doLayout()'>
+    <p>Print preview to see alternative layout.</p>
     <div id='root'>
         <div>0</div>
         <div>1</div>

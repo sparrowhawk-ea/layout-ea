@@ -13,8 +13,14 @@
             width: 400px;
             height: 300px;
         }
+
+        @media print {
+            body>p {
+                display: none;
+            }
+        }
     </style>
-    <script src='//cdn.jsdelivr.net/gh/sparrowhawk-ea/layout-ea/dist/index.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@eafmm/layout-ea/dist/index.js'></script>
     <script>
         // this would normally be in a separate file
         function doLayout() {
@@ -44,6 +50,7 @@
 </head>
 
 <body onload='doLayout()'>
+    <p>Print preview to see alternative layout.</p>
     <div id='root'>
         <div>0</div>
         <div>1</div>
