@@ -23,7 +23,7 @@ Please note that changing the text content or value of an HTML element only modi
 This limitation is not a problem for most web applications which follow the familiar deskop application paradigm of a proportionally fixed layout.
 Any variable content can be placed inside a DIV whose content is then managed separately using straight CSS or an alternative strategy.
 
-This library consists of one layout manager [Layout Ea Grid](README_Grid.md) which uses a CSS grid of equaly sized cells with a configurable number of columns and rows.
+This library consists of one layout manager [Layout Ea Grid](README_Grid.md) which uses a CSS grid of equally sized cells with a configurable number of columns and rows.
 
 ***
 # Getting Started
@@ -57,9 +57,9 @@ Any HTML elements to be excluded from this ordinal count may be given the valuel
 Method | Parameter/Return | Description
 --- | --- | ---
 layout | (
-| e: HTMLElement | The root HTML element of the DOM tree to be laid out.
-| config: [LayoutEaConfig](#layouteaconfig)
-| ): HTMLStyleElement | The HTML style element that was created and added to **document.head**
+ | e: HTMLElement | The root HTML element of the DOM tree to be laid out.
+ | config: [LayoutEaConfig](#layouteaconfig)
+ | ): HTMLStyleElement | The HTML style element that was created and added to **document.head**
 
 ***
 ## LayoutEaCallback
