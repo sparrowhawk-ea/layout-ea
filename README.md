@@ -57,9 +57,9 @@ Any HTML elements to be excluded from this ordinal count may be given the valuel
 Method | Parameter/Return | Description
 --- | --- | ---
 layout | (
- | e: HTMLElement | The root HTML element of the DOM tree to be laid out.
- | config: [LayoutEaConfig](#layouteaconfig)
- | ): HTMLStyleElement | The HTML style element that was created and added to **document.head**
+&nbsp;| e: HTMLElement | The root HTML element of the DOM tree to be laid out.
+&nbsp;| config: [LayoutEaConfig](#layouteaconfig)
+&nbsp;| ): HTMLStyleElement | The HTML style element that was created and added to **document.head**
 
 ***
 ## LayoutEaCallback
@@ -72,19 +72,19 @@ The callback may add CSS style attributes and values in the return value but sho
 Method | Parameter/Return | Description
 --- | --- | ---
 eaChild | ( | Intercept the CSS rule for a child HTML element before it is added to the style sheet.
-| e: HTMLElement | The child HTML element.
-| mediaName: string | The [name](#media-name) of the [LayoutEaMediaLayout](#layouteamedialayout) being processed.
-| selector: string | The CSS selector for the child element in the rule being added.
-| style: string | The CSS style in the rule being added.
-| content?: unknown | Optional context supplied by the [LayoutEaStrategy](#layouteastrategy) used.  For [LayoutEaGrid](README_Grid.md), this is always undefined.
-| ): string | Return the, possibly modified, style parameter.
+&nbsp;| e: HTMLElement | The child HTML element.
+&nbsp;| mediaName: string | The [name](#media-name) of the [LayoutEaMediaLayout](#layouteamedialayout) being processed.
+&nbsp;| selector: string | The CSS selector for the child element in the rule being added.
+&nbsp;| style: string | The CSS style in the rule being added.
+&nbsp;| content?: unknown | Optional context supplied by the [LayoutEaStrategy](#layouteastrategy) used.  For [LayoutEaGrid](README_Grid.md), this is always undefined.
+&nbsp;| ): string | Return the, possibly modified, style parameter.
 eaParent | ( | Intercept the CSS rule for the parent HTML element before it is added to the style sheet.
-| e: HTMLElement | The parent HTML element.
-| mediaName: string | The name attribute of the [LayoutEaMediaLayout](#layouteamedialayout) being processed.
-| selector: string | The CSS selector for the parent element in the rule being added.
-| style: string | The CSS style in the rule being added.
-| content?: unknown | Optional context supplied by the [LayoutEaStrategy](#layouteastrategy) used.  For [LayoutEaGrid](README_Grid.md), this is always undefined.
-| ): string | Return the, possibly modified, style parameter.
+&nbsp;| e: HTMLElement | The parent HTML element.
+&nbsp;| mediaName: string | The name attribute of the [LayoutEaMediaLayout](#layouteamedialayout) being processed.
+&nbsp;| selector: string | The CSS selector for the parent element in the rule being added.
+&nbsp;| style: string | The CSS style in the rule being added.
+&nbsp;| content?: unknown | Optional context supplied by the [LayoutEaStrategy](#layouteastrategy) used.  For [LayoutEaGrid](README_Grid.md), this is always undefined.
+&nbsp;| ): string | Return the, possibly modified, style parameter.
 
 ***
 ## LayoutEaConfig
